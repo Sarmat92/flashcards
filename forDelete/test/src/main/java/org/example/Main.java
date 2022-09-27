@@ -31,8 +31,8 @@ public class Main {
                 System.out.println("Correct!");
 
             } else if (card.containsValue(userAnswer)) {
-                tempKey = entry.getKey();
-                System.out.println("Wrong. The right answer is " + "\"" + card.get(entry.getKey()) + "\"" +
+                tempKey = entry.getKey();  // сюда хочу записать ключ, значение которого не является правильным ответом, но является ответом на другой вопрос. Этот вопрос(ключ) мне и нужен!
+                System.out.println("Wrong. The right answer is " + "\"" + card.get(entry.getKey()) + "\"" + // надо что-то сделать тут
                         " but your definition is correct for " + "\"" + tempKey + "\"" + ".");
             } else {
                 System.out.println("Wrong. The right answer is " + "\"" + card.get(entry.getKey()) + "\"");
