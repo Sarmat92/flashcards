@@ -16,11 +16,12 @@ public class Main {
         int size = Integer.parseInt(reader.readLine());
 
         createCards(reader, card, size);
-        checkUserAnswer(reader, card, size);
+        checkUserAnswer(reader, card);
     }
 
-    public static void checkUserAnswer(BufferedReader reader, Map<String, String> card, int size) throws IOException {
+    public static void checkUserAnswer(BufferedReader reader, Map<String, String> card) throws IOException {
 
+        String tempKey = "";
         for (var entry : card.entrySet()) {
 
             System.out.println("Print the definition of " + "\"" + entry.getKey() + "\"" + ":");
@@ -29,8 +30,12 @@ public class Main {
             if (userAnswer.equalsIgnoreCase(card.get(entry.getKey()))) {
                 System.out.println("Correct!");
 
-            }else {
-                System.out.println("Wrong. The right answer is " );
+            } else if (card.containsValue(userAnswer)) {
+                tempKey = entry.getKey();
+                System.out.println("Wrong. The right answer is " + "\"" + card.get(entry.getKey()) + "\"" +
+                        " but your definition is correct for " + "\"" + tempKey + "\"" + ".");
+            } else {
+                System.out.println("Wrong. The right answer is " + "\"" + card.get(entry.getKey()) + "\"");
             }
         }
     }
